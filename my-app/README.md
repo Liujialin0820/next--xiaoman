@@ -152,6 +152,8 @@ app/
 
 `template`(模板) 基本功能跟布局一样，只是不会保存状态
 
+![路由结构](./assets/1.gif)
+
 布局和模板的特点就是：
 
 - **布局嵌套**：支持多层布局嵌套，构建复杂的页面结构
@@ -238,7 +240,7 @@ export default function BPage() {
 }
 ```
 
-![路由结构](https://nextjs-docs-henna-six.vercel.app/1.gif)
+
 
 
 
