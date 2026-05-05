@@ -1,11 +1,32 @@
-export default function Home() {
+import { Suspense } from "react"
+import { cookies } from "next/headers"
+
+const DynamicContent = async () => {
+    const data = await fetch('https://www.mocklib.com/mock/random/name') //随机生成一个名称
+    const json = await data.json()
+    console.log(json)
+    const cookieStore = await cookies() //获取cookie
+    console.log(cookieStore)
     return (
-        <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-            <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-                <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-                    This is the home page.
-                </h1>
+        <div>
+            <h2>动态内容</h2>
+            <main>
+                <ul>
+                    <li>名称：{json.name}</li>
+                </ul>
             </main>
         </div>
-    );
+    )
+}
+
+export default async function Home() {
+
+    return (
+        <div>
+            <h1>Home</h1>
+            <Suspense fallback={<div>动态内容Loading...</div>}>
+                <DynamicContent />
+            </Suspense>
+        </div>
+    )
 }

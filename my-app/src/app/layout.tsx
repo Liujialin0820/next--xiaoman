@@ -27,8 +27,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <header>layout main header</header>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header>layout main header</header> {/* ✅ 放这里 */}
+        {children}
+      </body>
     </html>
   );
 }
